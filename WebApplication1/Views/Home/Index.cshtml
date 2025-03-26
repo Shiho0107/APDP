@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.User>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form asp-action="AddUser" asp-controller="Home" method="post">
+        <input type="type" id="username" name="name" value=""/>
+        <input type="password" id="username" name="name" value="" />
+        <input type="email" id="email" name="nane" value="" />
+        <button type="submit">Add</button>
+    </form>
+
+    <form action="EditUser" asp-controller="Home" method="post" >
+
+    </form>
+
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <a href="javascript:void(0) " onclick="deleteUser(@user.Id, @user.Username)">
+                            Delete
+                        </a>
+                        <button>
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+</table>
+</div>
+
+
+<script>
+    function deleteUser(id, username) {
+        if (confirm ('Are you sure to delete' + username + '?')) {
+            window.location.hre = '/Home/DeleteUser'
+        }
+    }
+</script>
