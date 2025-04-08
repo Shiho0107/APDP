@@ -1,0 +1,30 @@
+﻿@model IEnumerable<APDPAssignment.Models.Course>
+
+@{
+    ViewData["Title"] = "Course View";
+}
+
+<h2>Course Management</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course?.CourseName</td>
+                    <td>@course?.CourseDescription</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
